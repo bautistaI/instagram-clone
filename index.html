@@ -1,0 +1,26 @@
+<html ng-app="myApp">
+	<head>
+		<title>Instagram Clone</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+		<style type="text/css" src="styles.css"></style>
+	</head>
+	<body>
+		<div ng-controller="InstagramCtrl">
+		  <form ng-submit="submitted=true; submit(tag)" name="myForm">
+		    <input type="text" data-ng-model="keyword" placeholder="enter a search keyword" name="keyword" required>
+		    <input type="submit" value="Search">
+		  </form>
+		  <div ng-if="results">
+		  	<h2>We found {{results.length}} for your {{keyword}} search</h2>
+		   	<div ng-repeat="result in results">
+		   		<iframe ng-src="{{ }}" frameborder="0" width="480" height="390"></iframe>
+		   	</div>
+		  </div>
+		</div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
