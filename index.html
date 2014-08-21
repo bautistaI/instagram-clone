@@ -4,23 +4,40 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-		<style type="text/css" src="styles.css"></style>
+	  <link rel="stylesheet" href="styles.css">
+	  <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 	</head>
-	<body>
-		<div ng-controller="InstagramCtrl">
-		  <form ng-submit="submitted=true; submit(tag)" name="myForm">
-		    <input type="text" data-ng-model="keyword" placeholder="enter a search keyword" name="keyword" required>
-		    <input type="submit" value="Search">
-		  </form>
-		  <div ng-if="results">
-		  	<h2>We found {{results.length}} for your {{keyword}} search</h2>
-		   	<div ng-repeat="result in results">
-		   		<iframe ng-src="{{ }}" frameborder="0" width="480" height="390"></iframe>
-		   	</div>
-		  </div>
-		</div>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+	<body ng-cloak class="ng-cloak">
+		<div class="container-fluid">
+
+			<div class="logo">
+				<p>INST<img src="angular.png" alt="Angular" width='82' heigth='82'>GRAM</p>
+				<p>SEARCHER</p>
+				<p class="headline">The smart way to follow</p>
+			</div>
+
+			<div ng-controller="InstagramCtrl">
+			  <form class="col-md-12 form" role="form" ng-submit="submitted=true; submitForm()" name="myForm">
+			  	<div class="form-group input-fields">
+			  		<input class="search-input" type="text" data-ng-model="tag" placeholder="enter a search tag" name="tag">
+			    	<input class="btn btn-info btn-search" type="submit" value="Search">
+			  	</div>
+			  </form>
+			  <div>
+			  	<img ng-if="loading" src="ajax-loader.gif" alt="loading">
+			  	<p class="bg-success" ng-if="submitted">We found <span class="text-primary">{{photos.length}}</span> matches for your <span class="text-primary">{{tag}}</span> search</p>
+			   	<div ng-repeat="photo in photos">
+			   		<img ng-src="{{photo.images.thumbnail.url}}">
+			   	</div>
+				</div>
+			</div>
+
+		</div><!-- @end container -->
+		
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+<script src="animate.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
