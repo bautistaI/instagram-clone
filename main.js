@@ -3,6 +3,7 @@ angular.module('myApp', ['ngAnimate'])
     // hide messages by default
     $scope.foundPhotos = true;
     $scope.noPhotos = true;
+    $scope.bigImage = true;
     
     // Whenever we receive our promise back then go ahead and run this
     $scope.submitForm = function(){
@@ -38,6 +39,7 @@ angular.module('myApp', ['ngAnimate'])
         params: request
       })
       .success(function(data){
+        console.log('success', data);
         // show found photos message hide no photos found message
         $scope.foundPhotos = false;
         $scope.noPhotos = true;
@@ -51,6 +53,18 @@ angular.module('myApp', ['ngAnimate'])
       });
         // we return the promise whether is success or error
         return defer.promise;
+    };
+
+    // on image click display larger version
+    $scope.biggerImage = function(){
+      $scope.bigImage = false;
+      // $scope.largeImage = false;
+      $scope.thumbnail = true;
+    };
+    // on click hide large image show thumbnails
+    $scope.thumbnailImage = function(){
+      $scope.bigImage = true;
+      $scope.thumbnail = false;
     };
 });
 
