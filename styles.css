@@ -39,6 +39,72 @@ body{
 .btn-search{
 	text-shadow: 1px 1px #000;
 }
+.images{
+	border: 2px solid #FFF;
+	margin: 10px;
+}
+p.results-found.animate-found{
+background: #66CC99;
+clear: both;
+padding: 10px;
+text-align: center;
+color: #FFF;
+font-size: 17px;
+text-shadow: 1px 1px #000;
+border-radius: 10px;
+}
+.results-found span{
+	color: red;
+}
+p.results-notfound.animate-notfound{
+background: #FF0000;
+clear: both;
+padding: 10px;
+text-align: center;
+color: #FFF;
+font-size: 17px;
+text-shadow: 1px 1px #000;
+border-radius: 10px;
+}
+.animate-found.ng-hide-add{
+	-webkit-transition: all 0s ease-out;
+	   -moz-transition: all 0s ease-out;
+	    -ms-transition: all 0s ease-out;
+	     -o-transition: all 0s ease-out;
+	        transition: all 0s ease-out;
+	        opacity: 1;
+}
+.animate-found.ng-hide-remove{
+	-webkit-transition: all 1s ease-out;
+	   -moz-transition: all 1s ease-out;
+	    -ms-transition: all 1s ease-out;
+	     -o-transition: all 1s ease-out;
+	        transition: all 1s ease-out;
+	        opacity: 1;
+}
+.animate-found.ng-hide{
+	opacity: 0
+}
+.animate-notfound.ng-hide-add{
+	-webkit-transition: all 0s ease-out;
+	   -moz-transition: all 0s ease-out;
+	    -ms-transition: all 0s ease-out;
+	     -o-transition: all 0s ease-out;
+	        transition: all 0s ease-out;
+	        opacity: 1;
+}
+.animate-notfound.ng-hide-remove{
+	-webkit-transition: all 1s ease-out;
+	   -moz-transition: all 1s ease-out;
+	    -ms-transition: all 1s ease-out;
+	     -o-transition: all 1s ease-out;
+	        transition: all 1s ease-out;
+	        opacity: 1;
+}
+.animate-notfound.ng-hide{
+	opacity: 0
+}
+
 
 
 

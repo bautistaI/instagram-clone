@@ -1,6 +1,8 @@
 angular.module('myApp', ['ngAnimate'])
   .controller('InstagramCtrl', function($scope, $q, $http){
-    console.log('InstagramCtrl');
+    // hide messages by default
+    $scope.foundPhotos = true;
+    $scope.noPhotos = true;
     
     // Whenever we receive our promise back then go ahead and run this
     $scope.submitForm = function(){
@@ -8,8 +10,10 @@ angular.module('myApp', ['ngAnimate'])
       .then(function(data){
         $scope.photos = data.data;
         $scope.loading = false;
+        $scope.tag = '';
       }, function(error){
-        alert('error: ' + error );
+        $scope.tag = '';
+        $scope.loading = false;
       });
     };    
 
@@ -34,16 +38,19 @@ angular.module('myApp', ['ngAnimate'])
         params: request
       })
       .success(function(data){
-          console.log('success', data);
-          defer.resolve(data);
+        // show found photos message hide no photos found message
+        $scope.foundPhotos = false;
+        $scope.noPhotos = true;
+        defer.resolve(data);
       })
       .error(function(data){
-          console.log('error:', data);
-          defer.reject(data);
+        // hide found photos message show no photos found message
+        $scope.foundPhotos = true;
+        $scope.noPhotos = false;
+        defer.reject(data);
       });
         // we return the promise whether is success or error
         return defer.promise;
     };
 });
-
 

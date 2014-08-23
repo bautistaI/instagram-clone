@@ -17,7 +17,6 @@
 				<p>SEARCHER</p>
 				<p class="headline">The smart way to follow</p>
 			</div>
-
 			<div ng-controller="InstagramCtrl">
 			  <form class="col-md-12 form" role="form" ng-submit="submitted=true; submitForm()" name="myForm">
 			  	<div class="form-group input-fields">
@@ -25,15 +24,19 @@
 			    	<input class="btn btn-info btn-search" type="submit" value="Search">
 			  	</div>
 			  </form>
-			  <div>
-			  	<img ng-if="loading" src="ajax-loader.gif" alt="loading">
-			  	<p class="bg-success" ng-if="submitted">We found <span class="text-primary">{{photos.length}}</span> matches for your <span class="text-primary">{{tag}}</span> search</p>
-			   	<div ng-repeat="photo in photos">
+			  <div class="container-fluid">
+			  	<!-- Found and Not Found photos messages -->
+		  		<p class="results-found animate-found" ng-hide="foundPhotos">We found <span>{{photos.length}}</span> matches for your <span>{{tag}}</span> search</p>
+		  		<p class="results-notfound animate-notfound" ng-hide="noPhotos">We found 0 matches for your search</p>
+		  		<div class="loader">
+		  			<img ng-if="loading" src="ajax-loader.gif" alt="loading">
+		  		</div>
+		  		<p ng-model="notFound"></p>
+			   	<div class="images pull-left" ng-repeat="photo in photos">
 			   		<img ng-src="{{photo.images.thumbnail.url}}">
 			   	</div>
 				</div>
 			</div>
-
 		</div><!-- @end container -->
 		
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
