@@ -32,10 +32,10 @@
 		  		<!-- Iterate over the images we getting back -->
 			   	<div class="images pull-left" ng-repeat="photo in photos">
 			   		<!-- see console.log for object details. we are drilling through data -> images -> thumbnail -> url -->
-			   		<!-- THUMBNAIL -->
-			   			<img ng-click="biggerImage()" ng-hide="thumbnail" ng-src="{{photo.images.thumbnail.url}}">
-			   		<!-- LARGE IMAGE -->
-			   			<img ng-click="thumbnailImage()" ng-hide="bigImage" ng-src="{{photo.images.standard_resolution.url}}">
+			   			<!-- THUMBNAIL -->
+			   			<img ng-click="thumbnailImage()" ng-hide="thumbnail" ng-src="{{photo.images.thumbnail.url}}">
+			   			<!-- LARGE IMAGE -->
+			   			<img ng-click="biggerImage()" ng-hide="bigImage" ng-src="{{photo.images.standard_resolution.url}}">
 			   	</div>
 				</div>
 			</div>

@@ -16,7 +16,7 @@ angular.module('myApp', ['ngAnimate'])
         $scope.tag = '';
         $scope.loading = false;
       });
-    };    
+    };
 
     //Private function for now, but it could very well be inside of a service. 
     // This would send our promise back to the submitForm whenever is ready. 
@@ -55,16 +55,14 @@ angular.module('myApp', ['ngAnimate'])
         return defer.promise;
     };
 
-    // on image click display larger version
-    $scope.biggerImage = function(){
+    // on thumbnail image click hide thumbnail show large image
+    $scope.thumbnailImage = function(){
       $scope.bigImage = false;
-      // $scope.largeImage = false;
       $scope.thumbnail = true;
     };
-    // on click hide large image show thumbnails
-    $scope.thumbnailImage = function(){
+    // on large image click hide image show thumbnail
+    $scope.biggerImage = function(){
       $scope.bigImage = true;
       $scope.thumbnail = false;
     };
 });
-
