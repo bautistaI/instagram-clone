@@ -15,27 +15,30 @@
 				<p class="headline">The smart way to follow</p>
 			</div>
 			<div ng-controller="InstagramCtrl">
-			  <form class="col-md-12 form" role="form" ng-submit="submitted=true; submitForm()" name="myForm">
+			  <form class="col-md-12 form" role="form" ng-submit="submitted=true; submitForm()" name="myForm" novalidate>
 			  	<div class="form-group input-fields">
-			  		<input class="search-input" type="text" data-ng-model="tag" placeholder="enter a search tag" name="tag">
+			  		<input class="search-input" type="text" data-ng-model="tag" placeholder="enter a search tag" name="myTag" required>
 			    	<input class="btn btn-info btn-search" type="submit" value="Search">
+			    	<!-- invalid search -->
+			    	<p class="invalid-search animate-invalid-search" ng-hide="invalidSearch">Hey!! you forgot to enter a search tag</p>
 			  	</div>
 			  </form>
 			  <div class="container-fluid">
 			  	<!-- Found and Not Found photos messages -->
-		  		<p class="results-found animate-found" ng-hide="foundPhotos">We found <span>{{photos.length}}</span> matches for your search</p>
+		  		<p class="results-found animate-found" ng-hide="foundPhotos" ng-if="searchTag">We found <span>{{photos.length}}</span> matches for photos tagged with <span>{{searchTag}}</span></p>
 		  		<p class="results-notfound animate-notfound" ng-hide="noPhotos">We didn't found any matches for your search</p>
+		  		<p class="results-notfound animate-notfound" ng-if="apiError">{{apiError}}</p>
 		  		<!-- loading gif animation -->
-		  		<div class="loader">
-		  			<img ng-if="loading" src="ajax-loader.gif" alt="loading">
+		  		<div class="loader" ng-if="loading">
+		  			<img src="ajax-loader.gif" alt="loading">
 		  		</div>
 		  		<!-- Iterate over the images we getting back -->
 			   	<div class="images pull-left" ng-repeat="photo in photos">
 			   		<!-- see console.log for object details. we are drilling through data -> images -> thumbnail -> url -->
-			   			<!-- THUMBNAIL -->
-			   			<img ng-click="thumbnailImage()" ng-hide="thumbnail" ng-src="{{photo.images.thumbnail.url}}">
-			   			<!-- LARGE IMAGE -->
-			   			<img ng-click="biggerImage()" ng-hide="bigImage" ng-src="{{photo.images.standard_resolution.url}}">
+			   		<!-- using the href to link to the larger version of the image -->
+			   			<a href="{{photo.link}}" target="_blank">
+			   				<img ng-src="{{photo.images.thumbnail.url}}">
+			   			</a>
 			   	</div>
 				</div>
 			</div>
